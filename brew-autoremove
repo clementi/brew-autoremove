@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+echo "Removing unused Homebrew dependencies..."
+if [ -e Brewfile ]
+then
+  rm -f Brewfile
+  echo "Found and deleted Brewfile..."
+fi
+brew cleanup -sv
+brew bundle dump -v && brew bundle --force -v cleanup && rm -f Brewfile
+echo "Done."
